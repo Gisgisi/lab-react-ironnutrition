@@ -1,25 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
-import foods from './foods.json';
+import foodData from './foods.json';
 import { useState } from 'react';
 import FoodBox from './Components/FoodBox.js';
 
+
 function App() {
-  const [food, setfoods] = useState(foods)
+  const [food, setfoods] = useState(foodData)
   return (
     <div className="App">
-      {food.map((thefood) =>
-        <div>
-          <p>{thefood.name}</p>
-          <img src={thefood.image} width="10%" />
-        </div>
+      {food.map((foodie) =>
+        <FoodBox
+          title={foodie.name}
+          calories={foodie.calories}
+          image={foodie.image}
+          servings={foodie.servings}
+        />
       )}
-      <FoodBox food={{
-        name: "Orange",
-        calories: 85,
-        image: "https://i.imgur.com/abKGOcv.jpg",
-        servings: 1
-      }} />
+
     </div>
 
   );
